@@ -3,7 +3,7 @@
 	[string] $SlotName = "Staging",
 	[string] $TemplateFile = "ProdAndStage.json",
 	[string] $TemplateParameterFile = "param.json",
-	[string] $RepoUrl = "https://github.com/azure-appservice-samples/ToDoApp.git",
+	[string] $RepoUrl = "https://github.com/Chai-NED/ToDoApp.git",
 	[string] $Branch = "master"
 )
 
@@ -86,7 +86,7 @@ else
 
 	#Resource Group Properties
 	$RG_Name = "ToDoApp$ResourceGroupSuffix"
-	$RG_Location = "West US"
+	$RG_Location = "East US"
 
 	#Set parameters in parameter file and save to temp.json
 	(Get-Content ".\${TemplateParameterFile}" -Raw) `

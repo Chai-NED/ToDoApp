@@ -1,6 +1,6 @@
 ﻿Param(
-	[string] $Name,
-	[string] $FromSlot="staging"
+	[string] $Name
+	
 )
 
 if(!(Get-Module Azure) -or !(Get-Module AzureRM))
@@ -10,7 +10,7 @@ if(!(Get-Module Azure) -or !(Get-Module AzureRM))
 }
 
 #Swap backend first and then frontend
-Switch-AzureWebsiteSlot -Name "${Name}Api" -Slot1 $FromSlot -Slot2 production -Force -Verbose
-Switch-AzureWebsiteSlot -Name $Name -Slot1 $FromSlot -Slot2 production -Force -Verbose
+Switch-AzureRmWebAppSlot -ResourceGroupName $Name -SourceSlot "${Name}Api-staging" -DestinationSlot $Name  -Verbose
+Switch-AzureRmWebAppSlot -ResourceGroupName $Name -SourceSlot "${Name}-staging" -DestinationSlot $Name -Verbose
 
 Write-Host "Done"
