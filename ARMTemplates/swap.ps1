@@ -10,7 +10,7 @@ if(!(Get-Module Azure) -or !(Get-Module AzureRM))
 }
 
 #Swap backend first and then frontend
-Switch-AzureRmWebAppSlot -ResourceGroupName $Name -SourceSlot "${Name}Api-staging" -DestinationSlot $Name  -Verbose
-Switch-AzureRmWebAppSlot -ResourceGroupName $Name -SourceSlot "${Name}-staging" -DestinationSlot $Name -Verbose
+Switch-AzureRmWebAppSlot -ResourceGroupName $Name -SourceSlotName "staging" -Name "${Name}api"  -Verbose
+Switch-AzureRmWebAppSlot -ResourceGroupName $Name -SourceSlotName "staging" -Name $Name -Verbose
 
 Write-Host "Done"
