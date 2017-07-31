@@ -127,14 +127,19 @@ else
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}/$SlotName"
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api/$SlotName"
 
-		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix" -Slot $SlotName
+		#Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix" -Slot $SlotName
+
+		Get-AzureRmWebAppSlot -ResourceGroupName "ToDoApp$ResourceGroupSuffix" -Name "ToDoApp$ResourceGroupSuffix"  -Slot $SlotName
 	}
 	else
 	{
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}"
 		WaitOnDeployment $RG_Name "ToDoApp${ResourceGroupSuffix}Api"
 
-		Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix"
+		
+		
+		#Show-AzureWebsite -Name "ToDoApp$ResourceGroupSuffix"
+		Get-AzureRmWebApp -ResourceGroupName "ToDoApp$ResourceGroupSuffix"
 	}
 
 	Write-Host "-----------------------------------------"  -ForegroundColor Green 
